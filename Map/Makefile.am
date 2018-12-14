@@ -29,7 +29,7 @@ abyss_map_LDADD = \
 abyss_map_SOURCES = map.cc
 
 abyss_map_ssq_CPPFLAGS = $(abyss_map_CPPFLAGS) \
-	-D SAM_SEQ_QUAL=1
+	-D'SAM_SEQ_QUAL=1'
 
 abyss_map_ssq_CXXFLAGS = $(abyss_map_CXXFLAGS)
 

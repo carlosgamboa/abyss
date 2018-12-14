@@ -13,7 +13,7 @@ DistanceEst_LDADD = \
 DistanceEst_SOURCES = DistanceEst.cpp MLE.cpp MLE.h
 
 DistanceEst_ssq_CPPFLAGS = $(DistanceEst_CPPFLAGS) \
-	-D SAM_SEQ_QUAL=1
+	-D'SAM_SEQ_QUAL=1'
 
 DistanceEst_ssq_CXXFLAGS = $(DistanceEst_CXXFLAGS)
 

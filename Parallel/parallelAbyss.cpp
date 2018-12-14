@@ -111,7 +111,7 @@ int main(int argc, char** argv)
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
-	MPI_Finalize();
+	
 
 	if (opt::rank == 0) {
 		mergeFastaFiles(opt::contigsPath, "contigs-", true);
@@ -134,5 +134,6 @@ int main(int argc, char** argv)
 		}
 	}
 
+	MPI_Finalize();
 	return 0;
 }

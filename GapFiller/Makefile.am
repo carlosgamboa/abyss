@@ -4,7 +4,7 @@ abyss_gapfill_CPPFLAGS = -I$(top_srcdir) \
 	-I$(top_srcdir)/Common \
 	-I$(top_srcdir)/DataLayer \
 	-I$(top_srcdir)/Align \
-	-D SAM_SEQ_QUAL=1
+	-D'SAM_SEQ_QUAL=1'
 
 abyss_gapfill_CXXFLAGS = $(AM_CXXFLAGS) $(OPENMP_CXXFLAGS)
 

@@ -11,7 +11,7 @@ abyss_fixmate_LDADD= \
 abyss_fixmate_SOURCES=abyss-fixmate.cc
 
 abyss_fixmate_ssq_CPPFLAGS = $(abyss_fixmate_CPPFLAGS) \
-	-D SAM_SEQ_QUAL=1
+	-D'SAM_SEQ_QUAL=1'
 
 abyss_fixmate_ssq_LDADD = $(abyss_fixmate_LDADD)
 
