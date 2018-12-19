@@ -26,3 +26,7 @@ tags
 compile
 *.orig
 .deps
+charmrun
+ampirun
+*/charmrun
+*/ampirun

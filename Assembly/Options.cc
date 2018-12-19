@@ -132,7 +132,7 @@ string contigsPath;
 /** temporary output contigs path
  * Each node stores its contigs in its own file temporarily.
  */
-string contigsTempPath;
+thread_local string contigsTempPath;
 
 /** graph output */
 string graphPath;
@@ -359,9 +359,11 @@ void parse(int argc, char* const* argv)
 	inFiles.resize(argc - optind);
 	copy(&argv[optind], &argv[argc], inFiles.begin());
 
-	if (rank >= 0) {
+	if (opt::rank >= 0) {
 		ostringstream s;
 		s << "contigs-" << opt::rank << ".fa";
+		cout << "contigsTempPath " << contigsTempPath << "\n";
+		cout << "setting contigsTempPath  rank: "<< opt::rank <<"  path: " << s.str() << "\n";
 		contigsTempPath = s.str();
 	}
 
@@ -370,3 +372,5 @@ void parse(int argc, char* const* argv)
 }
 
 } // namespace opt
+
+

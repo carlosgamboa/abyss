@@ -20,7 +20,7 @@ namespace opt {
 	extern bool maskCov;
 	extern std::string coverageHistPath;
 	extern std::string contigsPath;
-	extern std::string contigsTempPath;
+	thread_local extern std::string contigsTempPath;
 	extern std::string graphPath;
 	extern std::string snpPath;
 	extern std::vector<std::string> inFiles;

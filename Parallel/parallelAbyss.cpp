@@ -55,6 +55,7 @@ static void mergeFastaFiles(const string& outputPath, const string& inputPathPre
 	for (int i = 0; i < opt::numProc; i++) {
 		ostringstream s;
 		s << inputPathPrefix << i << FASTA_SUFFIX;
+		cout << "removing ... "<<s.str() << "\n";
 		string str(s.str());
 		const char* path = str.c_str();
 		if (unlink(path) == -1) {
@@ -88,6 +89,10 @@ int main(int argc, char** argv)
 	opt::parse(argc, argv);
 	if (opt::rank == 0)
 		cout << "Running on " << opt::numProc << " processors\n";
+
+#if defined(AMPI)
+	cout << "running on AMPI with parallel objects \n"; 
+#endif
 
 	MPI_Barrier(MPI_COMM_WORLD);
 	char hostname[HOST_NAME_MAX];

@@ -21,6 +21,9 @@ gtime=command time -v -o $@.time
 endif
 endif
 
+#force to use gnu time to record things
+gtime=command time -v -o $@.time
+
 # Define this environment variable on Mac OS X to read
 # compressed files.
 export DYLD_FORCE_FLAT_NAMESPACE=1
@@ -549,18 +552,13 @@ else
 	$(gtime) abyss-paired-dbg $(abyssopt) $(ABYSS_OPTIONS) -o $*-1.fa -g $*-1.$g $(in) $(se)
 endif
 
-#print time
-echo $(date -u)
-
 else ifdef np
 %-1.fa:
-	$(gtime) $(charmrun) -v +p$(np) ABYSS-P $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se) +vp$(vp)
+	$(gtime) $(charmrun) -v +p$(np) ABYSS-P $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se) +vp$(vp) +mapping RR_MAP
 else
 %-1.fa:
 	$(gtime) ABYSS $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se)
 endif
-
-echo $(date -u)
 
 # Find overlapping contigs
 
