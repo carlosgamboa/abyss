@@ -434,6 +434,12 @@ versions: version
 	@sort --version; echo
 	@-mpirun --version
 
+ifndef doall
+#just do with abyss-P 
+default: unitigs
+
+else
+
 # Determine the default target
 ifdef db
 default: startDb
@@ -452,6 +458,8 @@ ifdef db
 default: finishDb
 endif
 default: stats
+
+endif 
 
 # Define the commands (phony targets)
 unitigs: $(name)-unitigs.fa
@@ -965,7 +973,7 @@ $(name)-stats.tab:
 
 override varList := a b c d e E G j k l m n N p q s S t v cs pi \
 	np pe lib mp se SS hostname xtip \
-	ssq ssq_ti path name in mpirun \
+	ssq ssq_ti path name doall in mpirun \
 	aligner long ref fixmate DistanceEst \
 	map deref abyssopt fgopt pbopt \
 	align mapopt fmopt deopt \
