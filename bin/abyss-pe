@@ -562,7 +562,7 @@ endif
 
 else ifdef np
 %-1.fa:
-	$(gtime) $(charmrun) -v +p$(np) ABYSS-P $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se) +vp$(vp) +mapping RR_MAP
+	$(gtime) $(charmrun) -v +p$(np) ABYSS-P $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se) +vp$(vp) +mapping RR_MAP +traceoff
 else
 %-1.fa:
 	$(gtime) ABYSS $(abyssopt) $(ABYSS_OPTIONS) -o $@ $(in) $(se)

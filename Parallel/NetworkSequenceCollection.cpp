@@ -259,6 +259,7 @@ void NetworkSequenceCollection::run()
 				break;
 			case NAS_ASSEMBLE:
 			{
+				AMPI_Trace_begin();
 				m_comm.barrier();
 				pumpNetwork();
 				FastaWriter writer(opt::contigsTempPath.c_str());
@@ -273,6 +274,7 @@ void NetworkSequenceCollection::run()
 				m_comm.reduce(numAssembled.second);
 				EndState();
 				SetState(NAS_DONE);
+				AMPI_Trace_end();
 				break;
 			case NAS_WAITING:
 				pumpNetwork();
@@ -465,6 +467,7 @@ void NetworkSequenceCollection::runControl()
 		switch (m_state) {
 			case NAS_LOADING:
 			{
+				
 				loadSequences();
 				EndState();
 
@@ -620,6 +623,7 @@ void NetworkSequenceCollection::runControl()
 				break;
 			case NAS_ASSEMBLE:
 			{
+				AMPI_Trace_begin();
 				cout << "Assembling...\n";
 				m_comm.sendControlMessage(APC_ASSEMBLE);
 				m_comm.barrier();
@@ -651,6 +655,7 @@ void NetworkSequenceCollection::runControl()
 				}
 
 				SetState(NAS_DONE);
+				AMPI_Trace_end();
 				break;
 			}
 			case NAS_DONE:
